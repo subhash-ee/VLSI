@@ -1,0 +1,28 @@
+Startpoint: _63_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _80_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   0.00    0.00   clock network delay (ideal)
+   0.00    0.00 ^ _63_/CK (DFF_X1)
+   0.08    0.08 v _63_/Q (DFF_X1)
+   0.02    0.11 ^ _137_/ZN (XNOR2_X1)
+   0.00    0.11 ^ _80_/D (DFF_X1)
+           0.11   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   0.00    0.00   clock network delay (ideal)
+   0.00    0.00   clock reconvergence pessimism
+           0.00 ^ _80_/CK (DFF_X1)
+   0.01    0.01   library hold time
+           0.01   data required time
+---------------------------------------------------------
+           0.01   data required time
+          -0.11   data arrival time
+---------------------------------------------------------
+           0.10   slack (MET)
+
+

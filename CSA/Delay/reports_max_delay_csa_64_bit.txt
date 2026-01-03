@@ -1,0 +1,50 @@
+Startpoint: _632_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _631_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   0.00    0.00   clock network delay (ideal)
+   0.00    0.00 ^ _632_/CK (DFF_X1)
+   0.08    0.08 v _632_/Q (DFF_X1)
+   0.03    0.12 ^ _1436_/ZN (OAI21_X1)
+   0.02    0.14 v _1437_/ZN (NAND2_X1)
+   0.03    0.17 ^ _1441_/ZN (OAI21_X1)
+   0.02    0.19 v _1442_/ZN (NAND2_X1)
+   0.03    0.22 ^ _1446_/ZN (OAI21_X1)
+   0.02    0.24 v _1447_/ZN (NAND2_X1)
+   0.03    0.27 ^ _1451_/ZN (OAI21_X1)
+   0.03    0.30 v _1452_/ZN (NAND2_X1)
+   0.07    0.37 v _764_/Z (MUX2_X1)
+   0.07    0.45 ^ _1034_/Z (MUX2_X1)
+   0.08    0.52 v _1079_/Z (MUX2_X1)
+   0.07    0.60 ^ _1124_/Z (MUX2_X1)
+   0.08    0.67 v _1169_/Z (MUX2_X1)
+   0.07    0.75 ^ _1214_/Z (MUX2_X1)
+   0.08    0.82 v _1259_/Z (MUX2_X1)
+   0.07    0.90 ^ _1304_/Z (MUX2_X1)
+   0.08    0.97 v _1349_/Z (MUX2_X1)
+   0.07    1.05 ^ _1394_/Z (MUX2_X1)
+   0.08    1.13 v _809_/Z (MUX2_X1)
+   0.07    1.20 ^ _854_/Z (MUX2_X1)
+   0.08    1.28 v _899_/Z (MUX2_X1)
+   0.07    1.35 ^ _944_/Z (MUX2_X1)
+   0.06    1.41 v _989_/Z (MUX2_X1)
+   0.00    1.41 v _631_/D (DFF_X1)
+           1.41   data arrival time
+
+  10.00   10.00   clock clk (rise edge)
+   0.00   10.00   clock network delay (ideal)
+   0.00   10.00   clock reconvergence pessimism
+          10.00 ^ _631_/CK (DFF_X1)
+  -0.04    9.96   library setup time
+           9.96   data required time
+---------------------------------------------------------
+           9.96   data required time
+          -1.41   data arrival time
+---------------------------------------------------------
+           8.55   slack (MET)
+
+

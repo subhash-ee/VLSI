@@ -1,0 +1,19 @@
+=== BPA_N ===
+
+   Number of wires:                376
+   Number of wire bits:            500
+   Number of public wires:         141
+   Number of public wire bits:     234
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                338
+     AOI21_X1                       32
+     BUF_X2                         33
+     DFF_X1                         97
+     MUX2_X1                         8
+     NOR2_X1                        64
+     NOR4_X1                         8
+     XNOR2_X1                       96
+
+   Chip area for module '\BPA_N': 737.618000

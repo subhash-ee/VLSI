@@ -1,0 +1,18 @@
+=== CSA_N ===
+
+   Number of wires:                234
+   Number of wire bits:            303
+   Number of public wires:          99
+   Number of public wire bits:     153
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                221
+     BUF_X2                         17
+     DFF_X1                         49
+     MUX2_X1                        15
+     NAND2_X1                       56
+     OAI21_X1                       28
+     XNOR2_X1                       56
+
+   Chip area for module '\CSA_N': 431.452000
