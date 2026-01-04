@@ -1,0 +1,18 @@
+
+=== RCA_N ===
+
+   Number of wires:                328
+   Number of wire bits:            452
+   Number of public wires:         133
+   Number of public wire bits:     226
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                290
+     BUF_X2                         33
+     DFF_X1                         97
+     NAND2_X1                       64
+     OAI21_X1                       32
+     XNOR2_X1                       64
+
+   Chip area for module '\RCA_N': 661.010000
