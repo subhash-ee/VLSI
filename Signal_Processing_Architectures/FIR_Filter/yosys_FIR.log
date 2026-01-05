@@ -1,0 +1,816 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Executing script file `FIR_Filter_Synthesis_run.tcl' --
+
+1. Executing Liberty frontend: /mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib
+Imported 135 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: FIR_Filter.v
+Parsing Verilog input from `FIR_Filter.v' to AST representation.
+Generating RTLIL representation for module `\FIR'.
+Warning: reg '\x_n_m' is assigned in a continuous assignment at FIR_Filter.v:35.10-35.25.
+Warning: reg '\x_n_1_m' is assigned in a continuous assignment at FIR_Filter.v:36.10-36.29.
+Warning: reg '\x_n_2_m' is assigned in a continuous assignment at FIR_Filter.v:37.10-37.29.
+Warning: reg '\x_n_3_m' is assigned in a continuous assignment at FIR_Filter.v:38.10-38.29.
+Warning: reg '\x_n_4_m' is assigned in a continuous assignment at FIR_Filter.v:39.10-39.29.
+Warning: reg '\x_n_5_m' is assigned in a continuous assignment at FIR_Filter.v:40.10-40.29.
+Warning: reg '\x_n_6_m' is assigned in a continuous assignment at FIR_Filter.v:41.10-41.29.
+Warning: reg '\x_n_7_m' is assigned in a continuous assignment at FIR_Filter.v:42.10-42.29.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \FIR
+
+3.2. Analyzing design hierarchy..
+Top module:  \FIR
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$FIR_Filter.v:18$1 in module FIR.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 7 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~1 debug messages>
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\FIR.$proc$FIR_Filter.v:55$10'.
+Creating decoders for process `\FIR.$proc$FIR_Filter.v:18$1'.
+     1/8: $0\x_n[15:0]
+     2/8: $0\x_n_7[15:0]
+     3/8: $0\x_n_6[15:0]
+     4/8: $0\x_n_5[15:0]
+     5/8: $0\x_n_4[15:0]
+     6/8: $0\x_n_3[15:0]
+     7/8: $0\x_n_2[15:0]
+     8/8: $0\x_n_1[15:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\FIR.\x_n' from process `\FIR.$proc$FIR_Filter.v:18$1'.
+Latch inferred for signal `\FIR.\x_n_1' from process `\FIR.$proc$FIR_Filter.v:18$1': $auto$proc_dlatch.cc:427:proc_dlatch$52
+Latch inferred for signal `\FIR.\x_n_2' from process `\FIR.$proc$FIR_Filter.v:18$1': $auto$proc_dlatch.cc:427:proc_dlatch$55
+Latch inferred for signal `\FIR.\x_n_3' from process `\FIR.$proc$FIR_Filter.v:18$1': $auto$proc_dlatch.cc:427:proc_dlatch$58
+Latch inferred for signal `\FIR.\x_n_4' from process `\FIR.$proc$FIR_Filter.v:18$1': $auto$proc_dlatch.cc:427:proc_dlatch$61
+Latch inferred for signal `\FIR.\x_n_5' from process `\FIR.$proc$FIR_Filter.v:18$1': $auto$proc_dlatch.cc:427:proc_dlatch$64
+Latch inferred for signal `\FIR.\x_n_6' from process `\FIR.$proc$FIR_Filter.v:18$1': $auto$proc_dlatch.cc:427:proc_dlatch$67
+Latch inferred for signal `\FIR.\x_n_7' from process `\FIR.$proc$FIR_Filter.v:18$1': $auto$proc_dlatch.cc:427:proc_dlatch$70
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\FIR.\x_n_1' using process `\FIR.$proc$FIR_Filter.v:55$10'.
+  created $dff cell `$procdff$71' with positive edge clock.
+Creating register for signal `\FIR.\x_n_2' using process `\FIR.$proc$FIR_Filter.v:55$10'.
+  created $dff cell `$procdff$72' with positive edge clock.
+Creating register for signal `\FIR.\x_n_3' using process `\FIR.$proc$FIR_Filter.v:55$10'.
+  created $dff cell `$procdff$73' with positive edge clock.
+Creating register for signal `\FIR.\x_n_4' using process `\FIR.$proc$FIR_Filter.v:55$10'.
+  created $dff cell `$procdff$74' with positive edge clock.
+Creating register for signal `\FIR.\x_n_5' using process `\FIR.$proc$FIR_Filter.v:55$10'.
+  created $dff cell `$procdff$75' with positive edge clock.
+Creating register for signal `\FIR.\x_n_6' using process `\FIR.$proc$FIR_Filter.v:55$10'.
+  created $dff cell `$procdff$76' with positive edge clock.
+Creating register for signal `\FIR.\x_n_7' using process `\FIR.$proc$FIR_Filter.v:55$10'.
+  created $dff cell `$procdff$77' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `FIR.$proc$FIR_Filter.v:55$10'.
+Found and cleaned up 1 empty switch in `\FIR.$proc$FIR_Filter.v:18$1'.
+Removing empty process `FIR.$proc$FIR_Filter.v:18$1'.
+Cleaned up 1 empty switch.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+<suppressed ~17 debug messages>
+
+5. Executing OPT pass (performing simple optimizations).
+
+5.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+<suppressed ~8 debug messages>
+
+5.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+<suppressed ~45 debug messages>
+Removed a total of 15 cells.
+
+5.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+5.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+5.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+5.6. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 4 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 5 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 6 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 7 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 8 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 9 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 10 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 11 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 12 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 13 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 14 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+Setting constant 0-bit at position 15 on $auto$proc_dlatch.cc:427:proc_dlatch$55 ($dlatch) from module FIR.
+
+5.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+Warning: Driver-driver conflict for \x_n_1 [15] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [15] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [14] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [14] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [13] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [13] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [12] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [12] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [11] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [11] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [10] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [10] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [9] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [9] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [8] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [8] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [7] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [7] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [6] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [6] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [5] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [5] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [4] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [4] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [3] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [3] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [2] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [2] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [1] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [1] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_1 [0] between cell $procdff$71.Q and constant 1'0 in FIR: Resolved using constant.
+Warning: Driver-driver conflict for \x_n_2 [0] between cell $procdff$72.Q and constant 1'0 in FIR: Resolved using constant.
+Removed 3 unused cells and 57 unused wires.
+<suppressed ~4 debug messages>
+
+5.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+<suppressed ~10 debug messages>
+
+5.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+5.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+5.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+5.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+<suppressed ~3 debug messages>
+
+5.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+5.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+5.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+5.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+5.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+5.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+5.23. Finished OPT passes. (There is nothing left to do.)
+
+6. Executing FSM pass (extract and optimize FSM).
+
+6.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+6.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+6.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+6.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+6.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+6.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+7. Executing OPT pass (performing simple optimizations).
+
+7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+7.9. Finished OPT passes. (There is nothing left to do.)
+
+8. Executing MEMORY pass.
+
+8.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+8.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+8.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+8.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+8.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+8.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+8.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+8.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+8.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+9. Executing OPT pass (performing simple optimizations).
+
+9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+9.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+9.9. Finished OPT passes. (There is nothing left to do.)
+
+10. Executing TECHMAP pass (map to technology primitives).
+
+10.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+10.2. Continuing TECHMAP pass.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=13:B_SIGNED=1:B_WIDTH=16:Y_WIDTH=29:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=13:B_SIGNED=1:B_WIDTH=16:Y_WIDTH=29:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=13:B_SIGNED=1:B_WIDTH=16:Y_WIDTH=29:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper maccmap for cells of type $macc.
+  add \x_n * 13'1111111010101 (16x13 bits, signed)
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011101 for cells of type $fa.
+Using template $paramod$88ebedc0964674c5b2e447c66b33a42fc7e7abe0\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000011101 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+No more expansions possible.
+<suppressed ~468 debug messages>
+
+11. Executing OPT pass (performing simple optimizations).
+
+11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+<suppressed ~1458 debug messages>
+
+11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+<suppressed ~312 debug messages>
+Removed a total of 104 cells.
+
+11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+11.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+Removed 130 unused cells and 215 unused wires.
+<suppressed ~131 debug messages>
+
+11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+11.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+11.16. Finished OPT passes. (There is nothing left to do.)
+
+12. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  cell DFF_X1 (noninv, pins=4, area=4.52) is a direct match for cell type $_DFF_P_.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  cell DFFR_X1 (noninv, pins=5, area=5.32) is a direct match for cell type $_DFF_PN0_.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  cell DFFS_X1 (noninv, pins=5, area=5.32) is a direct match for cell type $_DFF_PN1_.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  cell DFFRS_X1 (noninv, pins=6, area=6.38) is a direct match for cell type $_DFFSR_PNN_.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \DFF_X1 _DFF_P_ (.CK( C), .D( D), .Q( Q), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \DFFR_X1 _DFF_PN0_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .RN( R));
+    \DFFS_X1 _DFF_PN1_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .SN( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFRS_X1 _DFFSR_PNN_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .RN( R), .SN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+12.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\FIR':
+
+13. Executing OPT pass (performing simple optimizations).
+
+13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+13.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+13.9. Finished OPT passes. (There is nothing left to do.)
+
+14. Executing ABC pass (technology mapping using ABC).
+
+14.1. Extracting gate netlist of module `\FIR' to `<abc-temp-dir>/input.blif'..
+Extracted 726 gates and 744 wires to a netlist network with 17 inputs and 16 outputs.
+
+14.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.10 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "ANTENNA_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFRS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFRS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFR_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFR_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFF_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFF_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLH_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLH_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLL_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLL_X2".
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "TAPCELL_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X16" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X32" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "LOGIC0_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "LOGIC1_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFRS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFRS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFR_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFR_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFF_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFF_X2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X16".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TINV_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "TLAT_X1".
+ABC: Library "NangateOpenCellLibrary" from "/mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib" has 90 cells (35 skipped: 21 seq; 6 tri-state; 8 no func; 10 dont_use).  Time =     0.14 sec
+ABC: Memory =   11.51 MB. Time =     0.14 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "FA_X1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+14.1.2. Re-integrating ABC results.
+ABC RESULTS:           NOR4_X1 cells:        1
+ABC RESULTS:         AOI221_X1 cells:        1
+ABC RESULTS:          NAND4_X1 cells:        1
+ABC RESULTS:            OR4_X1 cells:        1
+ABC RESULTS:          OAI22_X1 cells:        3
+ABC RESULTS:           MUX2_X1 cells:        1
+ABC RESULTS:          AOI22_X1 cells:        2
+ABC RESULTS:           NOR3_X1 cells:       22
+ABC RESULTS:          NAND3_X1 cells:       17
+ABC RESULTS:           NOR2_X1 cells:       50
+ABC RESULTS:           AND3_X1 cells:       14
+ABC RESULTS:            INV_X1 cells:       32
+ABC RESULTS:            OR2_X1 cells:       21
+ABC RESULTS:            OR3_X1 cells:       16
+ABC RESULTS:          NAND2_X1 cells:       78
+ABC RESULTS:           AND2_X1 cells:       25
+ABC RESULTS:          AOI21_X1 cells:       59
+ABC RESULTS:           XOR2_X1 cells:       62
+ABC RESULTS:          OAI21_X1 cells:       64
+ABC RESULTS:          XNOR2_X1 cells:      123
+ABC RESULTS:         AOI211_X1 cells:        8
+ABC RESULTS:        internal signals:      711
+ABC RESULTS:           input signals:       17
+ABC RESULTS:          output signals:       16
+Removing temp directory.
+
+15. Executing FLATTEN pass (flatten design).
+
+16. Executing SETUNDEF pass (replace undef values with defined constants).
+Removed 0 unused cells and 167 unused wires.
+
+17. Executing IOPADMAP pass (mapping inputs/outputs to IO-PAD cells).
+Don't map input port FIR.clk: Missing option -inpad.
+Don't map input port FIR.rst: Missing option -inpad.
+Don't map input port FIR.x_in: Missing option -inpad.
+Mapping port FIR.y_out using BUF_X2.
+
+18. Executing OPT pass (performing simple optimizations).
+
+18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+18.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \FIR..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+18.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \FIR.
+Performed a total of 0 changes.
+
+18.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\FIR'.
+Removed a total of 0 cells.
+
+18.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+18.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \FIR..
+
+18.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module FIR.
+
+18.9. Finished OPT passes. (There is nothing left to do.)
+
+19. Printing statistics.
+
+=== FIR ===
+
+   Number of wires:                590
+   Number of wire bits:            635
+   Number of public wires:           4
+   Number of public wire bits:      34
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                617
+     AND2_X1                        25
+     AND3_X1                        14
+     AOI211_X1                       8
+     AOI21_X1                       59
+     AOI221_X1                       1
+     AOI22_X1                        2
+     BUF_X2                         16
+     INV_X1                         32
+     MUX2_X1                         1
+     NAND2_X1                       78
+     NAND3_X1                       17
+     NAND4_X1                        1
+     NOR2_X1                        50
+     NOR3_X1                        22
+     NOR4_X1                         1
+     OAI21_X1                       64
+     OAI22_X1                        3
+     OR2_X1                         21
+     OR3_X1                         16
+     OR4_X1                          1
+     XNOR2_X1                      123
+     XOR2_X1                        62
+
+   Chip area for module '\FIR': 717.668000
+
+20. Executing Verilog backend.
+
+20.1. Executing BMUXMAP pass.
+
+20.2. Executing DEMUXMAP pass.
+Dumping module `\FIR'.
+
+21. Generating Graphviz representation of design.
+Writing dot description to `/home/subhash/.yosys_show.dot'.
+Dumping module FIR to page 1.
+Exec: { test -f '/home/subhash/.yosys_show.dot.pid' && fuser -s '/home/subhash/.yosys_show.dot.pid' 2> /dev/null; } || ( echo $$ >&3; exec xdot '/home/subhash/.yosys_show.dot'; ) 3> '/home/subhash/.yosys_show.dot.pid' &

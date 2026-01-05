@@ -1,0 +1,34 @@
+=== FIR ===
+
+   Number of wires:                590
+   Number of wire bits:            635
+   Number of public wires:           4
+   Number of public wire bits:      34
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                617
+     AND2_X1                        25
+     AND3_X1                        14
+     AOI211_X1                       8
+     AOI21_X1                       59
+     AOI221_X1                       1
+     AOI22_X1                        2
+     BUF_X2                         16
+     INV_X1                         32
+     MUX2_X1                         1
+     NAND2_X1                       78
+     NAND3_X1                       17
+     NAND4_X1                        1
+     NOR2_X1                        50
+     NOR3_X1                        22
+     NOR4_X1                         1
+     OAI21_X1                       64
+     OAI22_X1                        3
+     OR2_X1                         21
+     OR3_X1                         16
+     OR4_X1                          1
+     XNOR2_X1                      123
+     XOR2_X1                        62
+
+   Chip area for module '\FIR': 717.668000
