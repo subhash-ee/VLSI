@@ -1,0 +1,28 @@
+=== n_sum_no_fsm ===
+
+   Number of wires:                 73
+   Number of wire bits:            155
+   Number of public wires:           7
+   Number of public wire bits:      20
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 75
+     AND2_X1                         1
+     AND3_X1                         2
+     AOI211_X1                       2
+     AOI21_X1                        9
+     BUF_X2                          9
+     DFF_X1                         13
+     INV_X1                          5
+     NAND2_X1                        6
+     NAND4_X1                        1
+     NOR2_X1                        10
+     NOR3_X1                         1
+     NOR4_X1                         1
+     OAI21_X1                        5
+     OR2_X1                          2
+     XNOR2_X1                        3
+     XOR2_X1                         5
+
+   Chip area for module '\n_sum_no_fsm': 123.690000

@@ -1,0 +1,881 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Executing script file `sum_n_synthesis_run.tcl' --
+
+1. Executing Liberty frontend: /mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib
+Imported 135 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: sum_n_fsm_3.v
+Parsing Verilog input from `sum_n_fsm_3.v' to AST representation.
+Generating RTLIL representation for module `\n_sum_fsm_3'.
+Warning: reg '\add_out' is assigned in a continuous assignment at sum_n_fsm_3.v:68.10-68.33.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \n_sum_fsm_3
+
+3.2. Analyzing design hierarchy..
+Top module:  \n_sum_fsm_3
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$sum_n_fsm_3.v:90$13 in module n_sum_fsm_3.
+Marked 1 switch rules as full_case in process $proc$sum_n_fsm_3.v:42$4 in module n_sum_fsm_3.
+Marked 4 switch rules as full_case in process $proc$sum_n_fsm_3.v:32$2 in module n_sum_fsm_3.
+Marked 1 switch rules as full_case in process $proc$sum_n_fsm_3.v:22$1 in module n_sum_fsm_3.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 6 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~8 debug messages>
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:90$13'.
+     1/1: $2\Done_count[3:0]
+Creating decoders for process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:82$12'.
+Creating decoders for process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:75$11'.
+Creating decoders for process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:42$4'.
+     1/3: $1\Done_count[3:0]
+     2/3: $1\sum_in[7:0]
+     3/3: $1\i_in[3:0]
+Creating decoders for process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:32$2'.
+     1/4: $4\next_state[1:0]
+     2/4: $3\next_state[1:0]
+     3/4: $2\next_state[1:0]
+     4/4: $1\next_state[1:0]
+Creating decoders for process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:22$1'.
+     1/1: $0\state[1:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\n_sum_fsm_3.\i_in' from process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:42$4'.
+No latch inferred for signal `\n_sum_fsm_3.\sum_in' from process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:42$4'.
+Latch inferred for signal `\n_sum_fsm_3.\Done_count' from process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:42$4': $auto$proc_dlatch.cc:427:proc_dlatch$74
+No latch inferred for signal `\n_sum_fsm_3.\next_state' from process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:32$2'.
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\n_sum_fsm_3.\Done_count' using process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:90$13'.
+  created $dff cell `$procdff$75' with positive edge clock.
+Creating register for signal `\n_sum_fsm_3.\sum_n' using process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:82$12'.
+  created $dff cell `$procdff$76' with positive edge clock.
+Creating register for signal `\n_sum_fsm_3.\i_out' using process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:75$11'.
+  created $dff cell `$procdff$77' with positive edge clock.
+Creating register for signal `\n_sum_fsm_3.\state' using process `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:22$1'.
+  created $dff cell `$procdff$78' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:90$13'.
+Removing empty process `n_sum_fsm_3.$proc$sum_n_fsm_3.v:90$13'.
+Removing empty process `n_sum_fsm_3.$proc$sum_n_fsm_3.v:82$12'.
+Removing empty process `n_sum_fsm_3.$proc$sum_n_fsm_3.v:75$11'.
+Found and cleaned up 1 empty switch in `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:42$4'.
+Removing empty process `n_sum_fsm_3.$proc$sum_n_fsm_3.v:42$4'.
+Found and cleaned up 4 empty switches in `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:32$2'.
+Removing empty process `n_sum_fsm_3.$proc$sum_n_fsm_3.v:32$2'.
+Found and cleaned up 1 empty switch in `\n_sum_fsm_3.$proc$sum_n_fsm_3.v:22$1'.
+Removing empty process `n_sum_fsm_3.$proc$sum_n_fsm_3.v:22$1'.
+Cleaned up 8 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+<suppressed ~8 debug messages>
+
+5. Executing OPT pass (performing simple optimizations).
+
+5.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+5.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+<suppressed ~33 debug messages>
+Removed a total of 11 cells.
+
+5.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$52.
+    dead port 2/2 on $mux $procmux$44.
+    dead port 2/2 on $mux $procmux$37.
+Removed 3 multiplexer ports.
+<suppressed ~6 debug messages>
+
+5.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+5.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+5.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$78 ($dff) from module n_sum_fsm_3 (D = \next_state, Q = \state, rval = 2'00).
+Adding EN signal on $procdff$77 ($dff) from module n_sum_fsm_3 (D = $procmux$30_Y, Q = \i_out).
+Adding EN signal on $procdff$76 ($dff) from module n_sum_fsm_3 (D = $procmux$26_Y, Q = \sum_n).
+Adding SRST signal on $procdff$75 ($dff) from module n_sum_fsm_3 (D = $procmux$16_Y, Q = \Done_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$86 ($sdff) from module n_sum_fsm_3 (D = $add$sum_n_fsm_3.v:97$15_Y [3:0], Q = \Done_count).
+Setting constant 0-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$74 ($dlatch) from module n_sum_fsm_3.
+Setting constant 0-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$74 ($dlatch) from module n_sum_fsm_3.
+Setting constant 0-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$74 ($dlatch) from module n_sum_fsm_3.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$74 ($dlatch) from module n_sum_fsm_3.
+
+5.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+Warning: Driver-driver conflict for \Done_count [3] between cell $auto$ff.cc:266:slice$87.Q and constant 1'0 in n_sum_fsm_3: Resolved using constant.
+Warning: Driver-driver conflict for \Done_count [2] between cell $auto$ff.cc:266:slice$87.Q and constant 1'0 in n_sum_fsm_3: Resolved using constant.
+Warning: Driver-driver conflict for \Done_count [1] between cell $auto$ff.cc:266:slice$87.Q and constant 1'0 in n_sum_fsm_3: Resolved using constant.
+Warning: Driver-driver conflict for \Done_count [0] between cell $auto$ff.cc:266:slice$87.Q and constant 1'0 in n_sum_fsm_3: Resolved using constant.
+Removed 7 unused cells and 50 unused wires.
+<suppressed ~8 debug messages>
+
+5.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+<suppressed ~7 debug messages>
+
+5.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4 debug messages>
+
+5.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+5.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+5.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+Removed 1 unused cells and 5 unused wires.
+<suppressed ~2 debug messages>
+
+5.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+5.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4 debug messages>
+
+5.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+5.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+5.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+5.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+5.23. Finished OPT passes. (There is nothing left to do.)
+
+6. Executing FSM pass (extract and optimize FSM).
+
+6.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+6.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+6.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+6.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+6.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+6.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+7. Executing OPT pass (performing simple optimizations).
+
+7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4 debug messages>
+
+7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+7.9. Finished OPT passes. (There is nothing left to do.)
+
+8. Executing MEMORY pass.
+
+8.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+8.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+8.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+8.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+8.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+8.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+8.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+8.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+8.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+9. Executing OPT pass (performing simple optimizations).
+
+9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4 debug messages>
+
+9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+9.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+9.9. Finished OPT passes. (There is nothing left to do.)
+
+10. Executing TECHMAP pass (map to technology primitives).
+
+10.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+10.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $eq.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$fc16b9f758000d363d24f130038bd99b46b4fa1b\_90_pmux for cells of type $pmux.
+Using template $paramod$bf2533632d512eac76dd186c0da49367e29b8e98\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $sdff.
+Using template $paramod$97565c3687be688407d1272a293bd9d0ae6852dc\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $dffe.
+Using template $paramod$a7817265ef3ab2ee43da53bbd8a90f6450d412d9\_90_alu for cells of type $alu.
+Using template $paramod$b9513f2555ba02118b069422fea717af39120cf7\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~660 debug messages>
+
+11. Executing OPT pass (performing simple optimizations).
+
+11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+<suppressed ~438 debug messages>
+
+11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+<suppressed ~96 debug messages>
+Removed a total of 32 cells.
+
+11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+11.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+Removed 17 unused cells and 293 unused wires.
+<suppressed ~18 debug messages>
+
+11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+11.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$281 ($_DFFE_PP_) from module n_sum_fsm_3 (D = $procmux$26.B_AND_S [15], Q = \sum_n [7], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$280 ($_DFFE_PP_) from module n_sum_fsm_3 (D = $procmux$26.B_AND_S [14], Q = \sum_n [6], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$279 ($_DFFE_PP_) from module n_sum_fsm_3 (D = $procmux$26.B_AND_S [13], Q = \sum_n [5], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$278 ($_DFFE_PP_) from module n_sum_fsm_3 (D = $procmux$26.B_AND_S [12], Q = \sum_n [4], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$277 ($_DFFE_PP_) from module n_sum_fsm_3 (D = $procmux$26.B_AND_S [11], Q = \sum_n [3], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$276 ($_DFFE_PP_) from module n_sum_fsm_3 (D = $procmux$26.B_AND_S [10], Q = \sum_n [2], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$275 ($_DFFE_PP_) from module n_sum_fsm_3 (D = $procmux$26.B_AND_S [9], Q = \sum_n [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$274 ($_DFFE_PP_) from module n_sum_fsm_3 (D = $procmux$26.B_AND_S [8], Q = \sum_n [0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$239 ($_SDFF_PP0_) from module n_sum_fsm_3 (D = $procmux$55.Y_B [1], Q = \state [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$238 ($_SDFF_PP0_) from module n_sum_fsm_3 (D = $procmux$55.Y_B [0], Q = \state [0], rval = 1'0).
+
+11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+Removed 10 unused cells and 4 unused wires.
+<suppressed ~13 debug messages>
+
+11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+11.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+11.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+11.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+11.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+11.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+11.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+11.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+11.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+11.30. Finished OPT passes. (There is nothing left to do.)
+
+12. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  cell DFF_X1 (noninv, pins=4, area=4.52) is a direct match for cell type $_DFF_P_.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  cell DFFR_X1 (noninv, pins=5, area=5.32) is a direct match for cell type $_DFF_PN0_.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  cell DFFS_X1 (noninv, pins=5, area=5.32) is a direct match for cell type $_DFF_PN1_.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  cell DFFRS_X1 (noninv, pins=6, area=6.38) is a direct match for cell type $_DFFSR_PNN_.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFRS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFR_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFFS_X2' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X1' - skipping.
+Warning: Found unsupported expression 'SE*SI+D*!SE' in pin attribute of cell 'SDFF_X2' - skipping.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \DFF_X1 _DFF_P_ (.CK( C), .D( D), .Q( Q), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \DFFR_X1 _DFF_PN0_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .RN( R));
+    \DFFS_X1 _DFF_PN1_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .SN( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFRS_X1 _DFFSR_PNN_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .RN( R), .SN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+12.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\n_sum_fsm_3':
+  mapped 14 $_DFF_P_ cells to \DFF_X1 cells.
+
+13. Executing OPT pass (performing simple optimizations).
+
+13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+13.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+Removed 6 unused cells and 12 unused wires.
+<suppressed ~7 debug messages>
+
+13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+13.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+13.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+13.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+13.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+13.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+13.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+13.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+13.16. Finished OPT passes. (There is nothing left to do.)
+
+14. Executing ABC pass (technology mapping using ABC).
+
+14.1. Extracting gate netlist of module `\n_sum_fsm_3' to `<abc-temp-dir>/input.blif'..
+Extracted 92 gates and 119 wires to a netlist network with 26 inputs and 15 outputs.
+
+14.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.12 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "ANTENNA_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFRS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFRS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFR_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFR_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFF_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFF_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLH_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLH_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLL_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLL_X2".
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "TAPCELL_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X16" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X32" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "LOGIC0_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "LOGIC1_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFRS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFRS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFR_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFR_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFF_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFF_X2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X16".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TINV_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "TLAT_X1".
+ABC: Library "NangateOpenCellLibrary" from "/mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib" has 90 cells (35 skipped: 21 seq; 6 tri-state; 8 no func; 10 dont_use).  Time =     0.16 sec
+ABC: Memory =   11.51 MB. Time =     0.16 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "FA_X1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+14.1.2. Re-integrating ABC results.
+ABC RESULTS:            INV_X1 cells:        8
+ABC RESULTS:          XNOR2_X1 cells:        1
+ABC RESULTS:           AND4_X1 cells:        1
+ABC RESULTS:          NAND4_X1 cells:        1
+ABC RESULTS:            OR3_X1 cells:        1
+ABC RESULTS:          OAI22_X1 cells:        1
+ABC RESULTS:          NAND2_X1 cells:        6
+ABC RESULTS:           AND2_X1 cells:        1
+ABC RESULTS:         OAI211_X1 cells:        1
+ABC RESULTS:           AND3_X1 cells:        2
+ABC RESULTS:         AOI211_X1 cells:        2
+ABC RESULTS:           XOR2_X1 cells:        3
+ABC RESULTS:          AOI22_X1 cells:        2
+ABC RESULTS:          OAI21_X1 cells:       13
+ABC RESULTS:           NOR4_X1 cells:        1
+ABC RESULTS:            OR2_X1 cells:        2
+ABC RESULTS:           NOR3_X1 cells:        5
+ABC RESULTS:          AOI21_X1 cells:       14
+ABC RESULTS:           NOR2_X1 cells:       10
+ABC RESULTS:        internal signals:       78
+ABC RESULTS:           input signals:       26
+ABC RESULTS:          output signals:       15
+Removing temp directory.
+
+15. Executing FLATTEN pass (flatten design).
+
+16. Executing SETUNDEF pass (replace undef values with defined constants).
+Removed 0 unused cells and 81 unused wires.
+
+17. Executing IOPADMAP pass (mapping inputs/outputs to IO-PAD cells).
+Don't map input port n_sum_fsm_3.N: Missing option -inpad.
+Don't map input port n_sum_fsm_3.N_valid: Missing option -inpad.
+Don't map input port n_sum_fsm_3.clk: Missing option -inpad.
+Don't map input port n_sum_fsm_3.rst: Missing option -inpad.
+Mapping port n_sum_fsm_3.sum_n using BUF_X2.
+Mapping port n_sum_fsm_3.sum_valid using BUF_X2.
+
+18. Executing OPT pass (performing simple optimizations).
+
+18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+18.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \n_sum_fsm_3..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+18.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \n_sum_fsm_3.
+Performed a total of 0 changes.
+
+18.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\n_sum_fsm_3'.
+Removed a total of 0 cells.
+
+18.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+18.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \n_sum_fsm_3..
+
+18.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module n_sum_fsm_3.
+
+18.9. Finished OPT passes. (There is nothing left to do.)
+
+19. Printing statistics.
+
+=== n_sum_fsm_3 ===
+
+   Number of wires:                 96
+   Number of wire bits:            155
+   Number of public wires:           8
+   Number of public wire bits:      22
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 98
+     AND2_X1                         1
+     AND3_X1                         2
+     AND4_X1                         1
+     AOI211_X1                       2
+     AOI21_X1                       14
+     AOI22_X1                        2
+     BUF_X2                          9
+     DFF_X1                         14
+     INV_X1                          8
+     NAND2_X1                        6
+     NAND4_X1                        1
+     NOR2_X1                        10
+     NOR3_X1                         5
+     NOR4_X1                         1
+     OAI211_X1                       1
+     OAI21_X1                       13
+     OAI22_X1                        1
+     OR2_X1                          2
+     OR3_X1                          1
+     XNOR2_X1                        1
+     XOR2_X1                         3
+
+   Chip area for module '\n_sum_fsm_3': 149.758000
+
+20. Executing Verilog backend.
+
+20.1. Executing BMUXMAP pass.
+
+20.2. Executing DEMUXMAP pass.
+Dumping module `\n_sum_fsm_3'.
+
+21. Generating Graphviz representation of design.
+Writing dot description to `/home/subhash/.yosys_show.dot'.
+Dumping module n_sum_fsm_3 to page 1.
+Exec: { test -f '/home/subhash/.yosys_show.dot.pid' && fuser -s '/home/subhash/.yosys_show.dot.pid' 2> /dev/null; } || ( echo $$ >&3; exec xdot '/home/subhash/.yosys_show.dot'; ) 3> '/home/subhash/.yosys_show.dot.pid' &
