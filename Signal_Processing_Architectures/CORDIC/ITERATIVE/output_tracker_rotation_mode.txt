@@ -1,0 +1,10 @@
+cosine of angle 10.001586 = 0.984741, sine of angle 10.001586 = 0.173889
+cosine of angle 19.999675 = 0.939514, sine of angle 19.999675 = 0.342102
+cosine of angle 30.001261 = 0.866150, sine of angle 30.001261 = 0.499817
+cosine of angle 39.999351 = 0.766052, sine of angle 39.999351 = 0.642761
+cosine of angle 50.000937 = 0.642639, sine of angle 50.000937 = 0.766174
+cosine of angle 59.999026 = 0.499817, sine of angle 59.999026 = 0.866150
+cosine of angle 70.000612 = 0.342102, sine of angle 70.000612 = 0.939514
+cosine of angle 79.998701 = 0.173767, sine of angle 79.998701 = 0.984741
+cosine of angle 90.000287 = 0.000122, sine of angle 90.000287 = 0.999939
+cosine of angle 99.998377 = -0.171021, sine of angle 99.998377 = 0.984680
