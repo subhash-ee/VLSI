@@ -1,0 +1,25 @@
+=== CORDIC_Pipelined ===
+
+   Number of wires:               1787
+   Number of wire bits:           2117
+   Number of public wires:         111
+   Number of public wire bits:     429
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1909
+     AND2_X1                       116
+     AOI21_X1                      160
+     AOI22_X1                       48
+     BUF_X2                         17
+     DFF_X1                        192
+     INV_X1                        344
+     NAND2_X1                      160
+     NOR2_X1                       296
+     NOR3_X1                        16
+     OAI21_X1                      192
+     OR3_X1                         32
+     XNOR2_X1                      128
+     XOR2_X1                       208
+
+   Chip area for module '\CORDIC_Pipelined': 2590.840000
