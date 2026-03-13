@@ -812,7 +812,7 @@ ABC: ABC command line: "source <abc-temp-dir>/abc.script".
 ABC: 
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.13 sec
+ABC: Parsing finished successfully.  Parsing time =     0.08 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "ANTENNA_X1" due to dont_use attribute.
 ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X1" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X2" without logic function.
@@ -858,8 +858,8 @@ ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X8".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X16".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "TINV_X1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "TLAT_X1".
-ABC: Library "NangateOpenCellLibrary" from "/mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib" has 90 cells (35 skipped: 21 seq; 6 tri-state; 8 no func; 10 dont_use).  Time =     0.18 sec
-ABC: Memory =   11.51 MB. Time =     0.18 sec
+ABC: Library "NangateOpenCellLibrary" from "/mnt/d/VLSI/Projects/NangateOpenCellLibrary_typical.lib" has 90 cells (35 skipped: 21 seq; 6 tri-state; 8 no func; 10 dont_use).  Time =     0.13 sec
+ABC: Memory =   11.51 MB. Time =     0.13 sec
 ABC: Warning: Detected 2 multi-output gates (for example, "FA_X1").
 ABC: + strash 
 ABC: + &get -n 
