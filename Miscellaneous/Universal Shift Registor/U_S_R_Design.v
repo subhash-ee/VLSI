@@ -1,4 +1,4 @@
-module U_S_R #(parameter WIDTH = 8)
+module U_S_R_Design #(parameter WIDTH = 8)
   (input [WIDTH-1:0] LOAD,
    input [1:0] sel,
    input r_s_in, l_s_in, clk,
@@ -23,20 +23,6 @@ module U_S_R #(parameter WIDTH = 8)
 endmodule
   
   
-  module U_S_R_1(input clk, r_s_mux_in, l_s_mux_in, load_mux_in,
-                 input [1:0] sel,
-                 output reg Q);
-    
-    wire mux_out;
-    
-    
-    assign mux_out = sel[1]?(sel[0]?load_mux_in:r_s_mux_in):(sel[0]?l_s_mux_in:Q);
-    
-    always@(posedge clk)
-      begin
-      Q<=mux_out;
-    end
-    
-  endmodule
+ 
   
   

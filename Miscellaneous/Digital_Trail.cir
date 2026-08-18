@@ -1,0 +1,8 @@
+.title KiCad schematic
+v1 clk GND pulse
+v2 Net-_U2-Pad~_ GND pulse
+U1 clk plot_v1
+U2 Net-_U2-Pad~_ plot_v1
+U3 clk Net-_U2-Pad~_ out d_flop
+U4 out plot_v1
+.end
